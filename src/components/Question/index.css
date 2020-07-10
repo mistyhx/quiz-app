@@ -95,3 +95,17 @@
   margin-top: -3rem;
   margin-left: 2rem;
 }
+
+.feedback {
+  font-weight: 600;
+}
+
+.feedback-message {
+  display: flex;
+  flex-direction: row;
+}
+
+.message {
+  margin-left: 0.5rem;
+  padding-top: 0.3rem;
+}

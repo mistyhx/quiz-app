@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { Shuffle } from "../../utils/Helpers";
+import { X, Check } from "react-feather";
 
 const Question = ({ data, indexNumber, cardColor, handleNext }) => {
   const { question, answer, selections } = data;
@@ -38,9 +39,19 @@ const Question = ({ data, indexNumber, cardColor, handleNext }) => {
   const renderFeedback = () => {
     if (selected) {
       if (isCorrect) {
-        return "Well done, this is correct";
+        return (
+          <div className="feedback-message">
+            <Check />
+            <div className="message"> Well done, this is correct</div>
+          </div>
+        );
       } else {
-        return "Sorry, it is incorrect";
+        return (
+          <div className="feedback-message">
+            <X />
+            <div className="message">Sorry, it is incorrect</div>
+          </div>
+        );
       }
     }
   };
@@ -61,7 +72,7 @@ const Question = ({ data, indexNumber, cardColor, handleNext }) => {
             </div>
           ))}
         </div>
-        <div>{renderFeedback()}</div>
+        <div className="feedback">{renderFeedback()}</div>
       </div>
       <div className="question-index">
         {indexNumber < 10 && "0"}
