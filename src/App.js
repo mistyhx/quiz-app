@@ -46,10 +46,16 @@ function App() {
 
   return (
     <div className="App">
-      <div>{index + 1}/10</div>
-      {questions[index] && <Question data={questions[index]} />}
-      <button onClick={() => handleNext()}>{index === 9 ? "Finish" : "Next"}</button>
-      {finish && <button onClick={() => handleRestart()}>Restart</button>}
+      <div>Progress</div>
+      {questions[index] && <Question indexNumber={index + 1} data={questions[index]} />}
+      <button className="button-primary" onClick={() => handleNext()}>
+        {index === 9 ? "Finish" : "Next"}
+      </button>
+      {finish && (
+        <button className="button-primary" onClick={() => handleRestart()}>
+          Restart
+        </button>
+      )}
     </div>
   );
 }

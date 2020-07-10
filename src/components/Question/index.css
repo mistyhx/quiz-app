@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap");
+
+.question-container {
+  background-color: #ffd917;
+  padding: 4rem;
+  margin: 4rem;
+  width: 800px;
+  height: 400px;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  border-radius: 2px;
+  box-shadow: 0px 5px 30px 6px rgba(0, 0, 0, 0.18);
+}
+.question-data {
+  width: 45%;
+}
+.question {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.answers {
+  padding: 2rem 0;
+}
+
+.option {
+  color: #2b2b2b;
+  border: 1px solid #474747;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0.8rem 0;
+}
+.question-index {
+  font-family: "Abril Fatface";
+  color: white;
+  font-size: 16rem;
+  width: 55%;
+  text-align: right;
+  opacity: 0.7;
+  text-shadow: 2px 6px 6px rgba(0, 0, 0, 0.2);
+}
