@@ -65,11 +65,11 @@ const Question = ({ data, indexNumber, cardColor, handleNext, loading }) => {
   return (
     <div className="question-container" style={{ backgroundColor: cardColor }}>
       <div className="question-data">
-        <div className="question">{question}</div>
+        <div className="question">{atob(question)}</div>
         <div className="answers">
           {options.map((item, index) => (
             <div key={index} className={defineOptionStatus(item)} onClick={() => handleSelection(item)}>
-              {item}
+              {atob(item)}
             </div>
           ))}
         </div>

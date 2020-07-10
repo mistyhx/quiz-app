@@ -16,7 +16,7 @@ function App() {
 
   const fetchQuestions = () => {
     setLoading(true);
-    fetch(`https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`)
+    fetch(`https://opentdb.com/api.php?amount=10&encode=base64&category=9&difficulty=medium&type=multiple`)
       .then(res => res.json())
       .then(result => {
         const temp = result.results.map(function (item) {
