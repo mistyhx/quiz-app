@@ -4,6 +4,8 @@ import Question from "./components/Question";
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [finish, setFinish] = useState(false);
 
   useEffect(() => {
     fetch(`https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`)
@@ -23,7 +25,22 @@ function App() {
         console.log(error);
       });
   }, []);
-  return <div className="App">{questions && questions.map((item, index) => <Question key={index} data={item} />)}</div>;
+
+  const handleNext = () => {
+    if (index < 9) {
+      setIndex(index => index + 1);
+    } else {
+      alert("finished");
+    }
+  };
+
+  return (
+    <div className="App">
+      <div>{index + 1}/10</div>
+      {questions[index] && <Question data={questions[index]} />}
+      <button onClick={() => handleNext()}>{index === 9 ? "Finish" : "Next"}</button>
+    </div>
+  );
 }
 
 export default App;
