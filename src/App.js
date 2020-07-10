@@ -9,24 +9,21 @@ function App() {
     fetch(`https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`)
       .then(res => res.json())
       .then(result => {
-        console.log(result);
-        //manipulate the data structure
-        //{question:.... answers:... selections:....(randomize selections)}
-        setQuestions(result.results);
+        const temp = result.results.map(function (item) {
+          return {
+            question: item.question,
+            answer: item.correct_answer,
+            selections: [...item.incorrect_answers, item.correct_answer],
+          };
+        });
+
+        setQuestions(temp);
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Quiz App</h1>
-      </header>
-      {questions && questions.map((item, index) => item.question)}
-      <Question />
-    </div>
-  );
+  return <div className="App">{questions && questions.map((item, index) => <Question key={index} data={item} />)}</div>;
 }
 
 export default App;
