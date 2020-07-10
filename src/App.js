@@ -10,6 +10,7 @@ const shuffledColors = Shuffle(backgroundColors);
 function App() {
   const [questions, setQuestions] = useState([]);
   const [index, setIndex] = useState(0);
+  const [count, setCount] = useState(0);
   const [finish, setFinish] = useState(false);
 
   const fetchQuestions = () => {
@@ -53,11 +54,14 @@ function App() {
     <div className="App">
       <Progress indexNumber={index} />
       {questions[index] && (
-        <Question cardColor={shuffledColors[index]} indexNumber={index + 1} data={questions[index]} />
+        <Question
+          handleNext={() => handleNext()}
+          cardColor={shuffledColors[index]}
+          indexNumber={index + 1}
+          data={questions[index]}
+        />
       )}
-      <button className="button-primary" onClick={() => handleNext()}>
-        {index === 9 ? "Finish" : "Next"}
-      </button>
+
       {finish && (
         <button className="button-primary" onClick={() => handleRestart()}>
           Restart

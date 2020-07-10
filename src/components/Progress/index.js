@@ -9,7 +9,7 @@ const Progress = ({ indexNumber }) => {
   return (
     <div className="progress-bar">
       {questionsIndexes.map(item => (
-        <Block item={item} indexNumber={indexNumber} />
+        <Block key={item} item={item} indexNumber={indexNumber} />
       ))}
     </div>
   );
