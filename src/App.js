@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Question from "./components/Question";
 import Progress from "./components/Progress";
+import { backgroundColors } from "./constants/colors";
+import { Shuffle } from "./utils/Helpers";
+
+const shuffledColors = Shuffle(backgroundColors);
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -48,7 +52,9 @@ function App() {
   return (
     <div className="App">
       <Progress indexNumber={index} />
-      {questions[index] && <Question indexNumber={index + 1} data={questions[index]} />}
+      {questions[index] && (
+        <Question cardColor={shuffledColors[index]} indexNumber={index + 1} data={questions[index]} />
+      )}
       <button className="button-primary" onClick={() => handleNext()}>
         {index === 9 ? "Finish" : "Next"}
       </button>
