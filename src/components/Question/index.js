@@ -26,8 +26,8 @@ const Question = ({ data, indexNumber, cardColor, handleNext }) => {
     }
   };
 
-  const handleSelection = (item, index) => {
-    setSelected(index);
+  const handleSelection = item => {
+    setSelected(item);
     if (item === answer) {
       setIsCorrect(true);
     } else {
@@ -56,7 +56,7 @@ const Question = ({ data, indexNumber, cardColor, handleNext }) => {
         <div className="question">{question}</div>
         <div className="answers">
           {options.map((item, index) => (
-            <div key={index} className={defineOptionStatus(index)} onClick={() => handleSelection(item, index)}>
+            <div key={index} className={defineOptionStatus(item)} onClick={() => handleSelection(item)}>
               {item}
             </div>
           ))}
