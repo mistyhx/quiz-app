@@ -65,6 +65,7 @@ function App() {
     if (finish) {
       return (
         <div className="summary-container">
+          <div className="label">RESULTS</div>
           <div className="summary-count">{count}/10</div>
           <button className="button-restart" onClick={() => handleRestart()}>
             Restart
