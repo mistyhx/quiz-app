@@ -19,7 +19,7 @@
   box-shadow: 0px 5px 30px 6px rgba(0, 0, 0, 0.12);
   position: relative;
   text-align: center;
-  animation: fadeIn 1s ease-in-out;
+  animation: rotateIn 1s ease-in-out;
 }
 
 .label {
@@ -53,13 +53,13 @@
   outline: none;
 }
 
-@keyframes fadeIn {
+@keyframes rotateIn {
   from {
     opacity: 0;
-    transform: translateY(-60px);
+    transform: rotateY(90deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotateY(0);
   }
 }
