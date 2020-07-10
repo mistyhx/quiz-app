@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <Progress indexNumber={index + 1} />
+      <Progress indexNumber={index} />
       {questions[index] && <Question indexNumber={index + 1} data={questions[index]} />}
       <button className="button-primary" onClick={() => handleNext()}>
         {index === 9 ? "Finish" : "Next"}
