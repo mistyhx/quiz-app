@@ -7,7 +7,7 @@ function App() {
   const [index, setIndex] = useState(0);
   const [finish, setFinish] = useState(false);
 
-  useEffect(() => {
+  const fetchQuestions = () => {
     fetch(`https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`)
       .then(res => res.json())
       .then(result => {
@@ -20,18 +20,28 @@ function App() {
         });
 
         setQuestions(temp);
+        setIndex(0);
       })
       .catch(error => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    fetchQuestions();
   }, []);
 
   const handleNext = () => {
     if (index < 9) {
       setIndex(index => index + 1);
     } else {
-      alert("finished");
+      setFinish(true);
     }
+  };
+
+  const handleRestart = () => {
+    fetchQuestions();
+    setFinish(false);
   };
 
   return (
@@ -39,6 +49,7 @@ function App() {
       <div>{index + 1}/10</div>
       {questions[index] && <Question data={questions[index]} />}
       <button onClick={() => handleNext()}>{index === 9 ? "Finish" : "Next"}</button>
+      {finish && <button onClick={() => handleRestart()}>Restart</button>}
     </div>
   );
 }
