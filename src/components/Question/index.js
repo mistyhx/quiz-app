@@ -28,7 +28,10 @@ const Question = ({ data, indexNumber }) => {
         </div>
         {/*<div>{answer}</div>*/}
       </div>
-      <div className="question-index">0{indexNumber}</div>
+      <div className="question-index">
+        {indexNumber < 10 && "0"}
+        {indexNumber}
+      </div>
     </div>
   );
 };
