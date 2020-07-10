@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap");
+
 .App {
   font-family: "Open Sans", Helvetica, sans-serif;
   height: 100vh;
@@ -7,15 +9,32 @@
   position: relative;
 }
 
-.button-primary {
+.summary-container {
+  padding: 6rem;
+  margin: 4rem;
+  width: 800px;
+  height: 420px;
+  align-self: center;
+  border-radius: 2px;
+  box-shadow: 0px 5px 30px 6px rgba(0, 0, 0, 0.18);
   position: relative;
+  text-align: center;
+}
+
+.summary-count {
+  font-family: "Abril Fatface", cursive;
+  font-size: 16rem;
+}
+
+.button-restart {
   border: none;
-  left: 60%;
-  bottom: 10%;
   width: 250px;
   color: white;
   background-color: black;
   font-size: 1.2rem;
   padding: 1.2rem;
   z-index: 2;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
 }

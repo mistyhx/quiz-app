@@ -3,7 +3,7 @@ import "./index.css";
 import { Shuffle } from "../../utils/Helpers";
 import { X, Check } from "react-feather";
 
-const Question = ({ data, indexNumber, cardColor, handleNext }) => {
+const Question = ({ data, indexNumber, cardColor, handleNext, loading }) => {
   const { question, answer, selections } = data;
   const [selected, setSelected] = useState("");
   const [options, setOptions] = useState([]);
@@ -56,9 +56,10 @@ const Question = ({ data, indexNumber, cardColor, handleNext }) => {
     }
   };
 
-  const handleOnClick = () => {
-    handleNext();
+  const handleOnClick = isCorrect => {
+    handleNext(isCorrect);
     setSelected("");
+    setIsCorrect(false);
   };
 
   return (
@@ -78,7 +79,7 @@ const Question = ({ data, indexNumber, cardColor, handleNext }) => {
         {indexNumber < 10 && "0"}
         {indexNumber}
       </div>
-      <button className="button-next" onClick={() => handleOnClick()}>
+      <button className="button-next" onClick={() => handleOnClick(isCorrect)}>
         {indexNumber === 10 ? "Finish" : "Next"}
       </button>
     </div>

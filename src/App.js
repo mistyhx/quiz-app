@@ -12,8 +12,10 @@ function App() {
   const [index, setIndex] = useState(0);
   const [count, setCount] = useState(0);
   const [finish, setFinish] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchQuestions = () => {
+    setLoading(true);
     fetch(`https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`)
       .then(res => res.json())
       .then(result => {
@@ -27,6 +29,8 @@ function App() {
 
         setQuestions(temp);
         setIndex(0);
+        setCount(0);
+        setLoading(false);
       })
       .catch(error => {
         console.log(error);
@@ -37,11 +41,18 @@ function App() {
     fetchQuestions();
   }, []);
 
-  const handleNext = () => {
+  const handleNext = isCorrect => {
+    console.log(isCorrect);
     if (index < 9) {
       setIndex(index => index + 1);
+      if (isCorrect) {
+        setCount(count => count + 1);
+      }
     } else {
       setFinish(true);
+      if (isCorrect) {
+        setCount(count => count + 1);
+      }
     }
   };
 
@@ -50,23 +61,34 @@ function App() {
     setFinish(false);
   };
 
+  const renderMain = () => {
+    if (finish) {
+      return (
+        <div className="summary-container">
+          <div className="summary-count">{count}/10</div>
+          <button className="button-restart" onClick={() => handleRestart()}>
+            Restart
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        questions[index] && (
+          <Question
+            handleNext={isCorrect => handleNext(isCorrect)}
+            cardColor={shuffledColors[index]}
+            indexNumber={index + 1}
+            data={questions[index]}
+          />
+        )
+      );
+    }
+  };
+
   return (
     <div className="App">
       <Progress indexNumber={index} />
-      {questions[index] && (
-        <Question
-          handleNext={() => handleNext()}
-          cardColor={shuffledColors[index]}
-          indexNumber={index + 1}
-          data={questions[index]}
-        />
-      )}
-
-      {finish && (
-        <button className="button-primary" onClick={() => handleRestart()}>
-          Restart
-        </button>
-      )}
+      {loading ? "" : renderMain()}
     </div>
   );
 }
