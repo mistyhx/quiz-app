@@ -136,3 +136,47 @@
     transform: translateY(0);
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .question-container {
+    margin: 1rem;
+    width: 400px;
+    height: 640px;
+    flex-direction: column-reverse;
+  }
+
+  .question-index {
+    margin-top: 0;
+    margin-left: 0;
+  }
+  .question-data {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .question-container {
+    margin: 1rem;
+    width: 320px;
+    height: 420px;
+  }
+
+  .question-index {
+    width: 100%;
+    font-size: 4rem;
+    text-align: left;
+    transform: translateY(80px);
+  }
+  .question-data {
+    width: 100%;
+  }
+
+  .answers {
+    padding: 0;
+    padding-bottom: 0;
+  }
+
+  .button-next {
+    right: 0;
+  }
+}

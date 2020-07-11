@@ -63,3 +63,29 @@
     transform: rotateY(0);
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .summary-container {
+    margin: 1rem;
+    width: 400px;
+    height: 640px;
+    padding-top: 30%;
+  }
+
+  .summary-count {
+    font-size: 10rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .summary-container {
+    margin: 1rem;
+    width: 320px;
+    height: 420px;
+    padding-top: 30%;
+  }
+
+  .summary-count {
+    font-size: 6rem;
+  }
+}
